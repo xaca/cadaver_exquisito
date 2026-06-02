@@ -7,3 +7,4 @@ Este es un ejercicio para aprender a trabajar de manera colaborativa en un repos
 - Daniela Zabaleta 🇨🇴
 - Diana López 🎈
 - Elizabeth Quintero O 🔥
+- Juanita Correa ✨
