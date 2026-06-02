@@ -8,3 +8,4 @@ Este es un ejercicio para aprender a trabajar de manera colaborativa en un repos
 - Diana López 🎈
 - Elizabeth Quintero O 🔥
 - Juanita Correa ✨
+- juliana Rojas 💌
