@@ -5,3 +5,4 @@ Este es un ejercicio para aprender a trabajar de manera colaborativa en un repos
 ## Estudiantes
 
 - Daniela Zabaleta 🇨🇴
+- Diana López 🎈
