@@ -9,3 +9,4 @@ Este es un ejercicio para aprender a trabajar de manera colaborativa en un repos
 - Elizabeth Quintero O 🔥
 - Juanita Correa ✨
 - juliana Rojas 💌
+- Valentina Tabares 🌷
