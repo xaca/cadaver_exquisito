@@ -10,3 +10,4 @@ Este es un ejercicio para aprender a trabajar de manera colaborativa en un repos
 - Juanita Correa ✨
 - juliana Rojas 💌
 - Valentina Tabares 🌷
+- Juan Rojas 🌠
