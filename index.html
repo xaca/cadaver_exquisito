@@ -3,162 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio | Diseñador Creativo</title>
+    <title>Landing Page - Wireframe a Código</title>
+    <style>
+        /* ==========================================================================
+           1. VARIABLES DE COLOR (Modifica estos valores para cambiar la paleta)
+           ========================================================================== */
+        :root {
+            --steel-azure: #044389;      /* Azul Oscuro: Usado en topbar, texto principal y bordes */
+            --canary-yellow: #FCFF4B;    /* Amarillo: Usado para el estado hover del botón Buy */
+            --orange: #FFAD05;           /* Naranja: Color principal del botón Buy y acentos */
+            --sky-reflection: #7CAFC4;   /* Azul Claro Grisáceo: Fondo del degradado del Hero */
+            --cornflower-blue: #5995ED;  /* Azul Intermedio: Borde superior y fondo del contenedor de imagen */
+            --text-dark: #1a1a1a;        /* Texto oscuro para párrafos */
+            --text-light: #ffffff;       /* Texto claro para contrastes */
+        }
+
+        /* ==========================================================================
+           2. ESTILOS GLOBALES Y RESETEO
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ==========================================================================
+           3. BARRA SUPERIOR (Topbar: Dirección y Teléfono)
+           ========================================================================== */
+        .topbar {
+            background-color: var(--steel-azure);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center; /* Centra los elementos horizontalmente */
+            gap: 40px;               /* Espacio de separación entre dirección y teléfono */
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-bottom: 2px solid var(--cornflower-blue);
+        }
+
+        /* ==========================================================================
+           4. BARRA DE NAVEGACIÓN (Navbar principal)
+           ========================================================================== */
+        .navbar {
+            background-color: white;
+            display: flex;
+            justify-content: space-between; /* Separa el bloque izquierdo del botón "Buy" */
+            align-items: center;            /* Centra verticalmente los elementos */
+            padding: 15px 5%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Contenedor que agrupa el Logo y el Menú de enlaces */
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 30px; /* Espacio entre el logo y el primer enlace */
+        }
+
+        /* Componente: Logo */
+        .logo {
+            border: 2px solid var(--steel-azure);
+            padding: 6px 20px;
+            border-radius: 20px; /* Hace el borde ovalado como en el wireframe */
+            font-weight: bold;
+            color: var(--steel-azure);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            background-color: var(--steel-azure);
+            color: white;
+        }
+
+        /* Lista de enlaces (Home, News, Contact, Docs) */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px; /* Espacio entre cada enlace */
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--steel-azure);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange); /* Cambio de color al pasar el cursor */
+        }
+
+        /* Componente: Botón de Acción (Buy) */
+        .btn-buy {
+            background-color: var(--orange);
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 24px;
+            border-radius: 20px; /* Borde redondeado característico del wireframe */
+            font-weight: bold;
+            border: 2px solid var(--orange);
+            transition: all 0.3s ease;
+        }
+
+        .btn-buy:hover {
+            background-color: var(--canary-yellow);
+            border-color: var(--canary-yellow);
+        }
+
+        /* ==========================================================================
+           5. SECCIÓN HERO / SLIDER CENTRAL
+           ========================================================================== */
+        .hero-slider {
+            position: relative;
+            flex: 1; /* Ocupa todo el espacio vertical restante de la pantalla */
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distribuye flechas y contenido */
+            padding: 40px 5%;
+            background: linear-gradient(135deg, #ffffff 0%, var(--sky-reflection) 100%);
+            overflow: hidden;
+        }
+
+        /* Componente: Flechas Laterales (< y >) */
+        .slider-arrow {
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            color: var(--steel-azure);
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.2s ease;
+            z-index: 10; /* Asegura que queden por encima de otros elementos */
+        }
+
+        .slider-arrow:hover {
+            transform: scale(1.2); /* Efecto de crecimiento sutil */
+            color: var(--orange);
+        }
+
+        /* Contenedor del Contenido (Divide el texto de la imagen) */
+        .slider-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas iguales */
+            align-items: center;
+            gap: 50px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Bloque Izquierdo: Textos (Título y Lorem Ipsum) */
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: var(--steel-azure);
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        /* Bloque Derecho: Contenedor de Imagen (Marcado con la X) */
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background-color: var(--cornflower-blue);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Simulación de las líneas cruzadas (X) del wireframe mediante CSS */
+        .hero-image-container::before,
+        .hero-image-container::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .hero-image-container::before { transform: rotate(45deg); }
+        .hero-image-container::after { transform: rotate(-45deg); }
+
+        /* Etiqueta de texto flotante sobre la imagen */
+        .hero-image-container span {
+            color: white;
+            font-weight: bold;
+            z-index: 1;
+            background: rgba(4, 67, 137, 0.8);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        /* Componente: Puntos de Paginación (Dots inferiores) */
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%); /* Centrado absoluto exacto */
+            display: flex;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(4, 67, 137, 0.3); /* Punto inactivo (semitransparente) */
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--steel-azure); /* Punto activo (relleno por completo) */
+            transform: scale(1.2);
+        }
+
+        /* ==========================================================================
+           6. RESPONSIVE DESIGN (Ajustes para pantallas móviles)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            /* Pasa de 2 columnas a 1 sola columna vertical */
+            .slider-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-image-container {
+                height: 250px;
+            }
+
+            /* Reorganiza la navegación en formato de lista vertical */
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-left {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f9f9fb; color: #1a1a1a; line-height: 1.6;">
+<body>
 
-    <header style="position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 1000;">
-        <div style="max-width: 1100px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
-            <a href="#" style="font-size: 24px; font-weight: 700; color: #111; text-decoration: none; letter-spacing: -0.5px;">EJEMPLO<span style="color: #dc2626;">.</span></a>
-            <nav>
-                <a href="#proyectos" style="margin-left: 25px; text-decoration: none; color: #4b5563; font-weight: 500; font-size: 15px; transition: color 0.3s;">Proyectos</a>
-                <a href="#habilidades" style="margin-left: 25px; text-decoration: none; color: #4b5563; font-weight: 500; font-size: 15px; transition: color 0.3s;">Habilidades</a>
-                <a href="#contacto" style="margin-left: 25px; text-decoration: none; color: #ffffff; background-color: #dc2626; padding: 8px 18px; border-radius: 6px; font-weight: 500; font-size: 15px; transition: background 0.3s;">Contacto</a>
-            </nav>
+    <div class="topbar">
+        <span>📍 Adress: Calle 123 #45-67</span>
+        <span>📞 Cellphone: +57 300 123 4567</span>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="#" class="logo">Logo</a>
+            
+            <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Docs</a></li>
+            </ul>
         </div>
-    </header>
+        <a href="#" class="btn-buy">Buy</a>
+    </nav>
 
-    <section style="max-width: 1100px; margin: 0 auto; padding: 120px 20px 80px 20px; text-align: center;">
-        <h1 style="font-size: 52px; font-weight: 800; color: #111827; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px;">
-            Hola, soy Diseñador <br><span style="color: #dc2626;">Visual & Multimedia</span>
-        </h1>
-        <p style="font-size: 18px; color: #6b7280; max-width: 600px; margin: 0 auto 40px auto;">
-            Me especializo en crear identidades de marca sólidas, diseño de interfaces de usuario (UI/UX) y experiencias digitales que conectan de forma honesta con las personas.
-        </p>
-        <div>
-            <a href="#proyectos" style="text-decoration: none; background-color: #111827; color: #fff; padding: 14px 28px; border-radius: 8px; font-weight: 600; margin-right: 15px; display: inline-block;">Ver mi trabajo</a>
-            <a href="#contacto" style="text-decoration: none; background-color: transparent; color: #111827; border: 2px solid #111827; padding: 12px 26px; border-radius: 8px; font-weight: 600; display: inline-block;">Hablemos</a>
-        </div>
-    </section>
+    <main class="hero-slider">
+        
+        <button class="slider-arrow" aria-label="Anterior">&#10094;</button>
 
-    <section id="proyectos" style="background-color: #ffffff; padding: 8px 0 100px 0; border-top: 1px solid #e5e7eb;">
-        <div style="max-width: 1100px; margin: 0 auto; padding: 80px 20px 0 20px;">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h2 style="font-size: 32px; font-weight: 700; color: #111827; margin-bottom: 10px;">Proyectos Destacados</h2>
-                <p style="color: #6b7280; font-size: 16px;">Una selección de mis últimos trabajos de diseño.</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-                
-                <div style="background-color: #f9f9fb; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb;">
-                    <div style="background-color: #fee2e2; height: 240px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #dc2626;">
-                        [ Imagen Proyecto UI/UX ]
-                    </div>
-                    <div style="padding: 25px;">
-                        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #dc2626; letter-spacing: 1px;">UI/UX Design</span>
-                        <h3 style="font-size: 20px; font-weight: 700; margin: 10px 0; color: #111827;">Rediseño App Financiera</h3>
-                        <p style="color: #6b7280; font-size: 14px; margin-bottom: 20px;">Optimización del flujo de usuarios y renovación de la interfaz visual para una fintech.</p>
-                        <a href="#" style="text-decoration: none; color: #111827; font-weight: 600; font-size: 14px;">Ver caso de estudio &rarr;</a>
-                    </div>
-                </div>
-
-                <div style="background-color: #f9f9fb; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb;">
-                    <div style="background-color: #fef3c7; height: 240px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #d97706;">
-                        [ Imagen Branding ]
-                    </div>
-                    <div style="padding: 25px;">
-                        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #d97706; letter-spacing: 1px;">Branding</span>
-                        <h3 style="font-size: 20px; font-weight: 700; margin: 10px 0; color: #111827;">Identidad de Marca 'Nova'</h3>
-                        <p style="color: #6b7280; font-size: 14px; margin-bottom: 20px;">Creación de logotipo, paleta de colores y manual de marca para una startup de tecnología.</p>
-                        <a href="#" style="text-decoration: none; color: #111827; font-weight: 600; font-size: 14px;">Ver caso de estudio &rarr;</a>
-                    </div>
-                </div>
-
-                <div style="background-color: #f9f9fb; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb;">
-                    <div style="background-color: #dcfce7; height: 240px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #15803d;">
-                        [ Imagen Empaque ]
-                    </div>
-                    <div style="padding: 25px;">
-                        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #15803d; letter-spacing: 1px;">Packaging</span>
-                        <h3 style="font-size: 20px; font-weight: 700; margin: 10px 0; color: #111827;">Café Origen - Empaque</h3>
-                        <p style="color: #6b7280; font-size: 14px; margin-bottom: 20px;">Diseño de empaque sustentable e ilustraciones a medida para una línea de café premium.</p>
-                        <a href="#" style="text-decoration: none; color: #111827; font-weight: 600; font-size: 14px;">Ver caso de estudio &rarr;</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="habilidades" style="max-width: 1100px; margin: 0 auto; padding: 100px 20px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-            <div style="flex: 1; min-width: 300px;">
-                <h2 style="font-size: 32px; font-weight: 700; color: #111827; margin-bottom: 20px;">Mis habilidades básicas</h2>
-                <p style="color: #6b7280; margin-bottom: 30px;">
-                    Combino el pensamiento estratégico con la ejecución técnica para entregar piezas de diseño que no solo se ven bien, sino que cumplen objetivos de negocio.
-                </p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <span style="background-color: #e5e7eb; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">Figma</span>
-                    <span style="background-color: #e5e7eb; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">Adobe Illustrator</span>
-                    <span style="background-color: #e5e7eb; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">Photoshop</span>
-                    <span style="background-color: #e5e7eb; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">Branding</span>
-                    <span style="background-color: #e5e7eb; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">HTML/CSS básico</span>
-                </div>
+        <div class="slider-content">
+            
+            <div class="hero-text">
+                <h1>Titulo</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus. Proin gravida nibh vel velit auctor aliquet.</p>
             </div>
             
-            <div style="flex: 1; min-width: 300px; background-color: #ffffff; padding: 35px; border-radius: 12px; border: 1px solid #e5e7eb;">
-                <div style="margin-bottom: 20px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; font-size: 14px;">
-                        <span>Diseño de Interfaces (UI)</span>
-                        <span>90%</span>
-                    </div>
-                    <div style="background-color: #e5e7eb; height: 8px; border-radius: 4px; overflow: hidden;">
-                        <div style="background-color: #dc2626; width: 90%; height: 100%;"></div>
-                    </div>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; font-size: 14px;">
-                        <span>Identidad de Marca</span>
-                        <span>85%</span>
-                    </div>
-                    <div style="background-color: #e5e7eb; height: 8px; border-radius: 4px; overflow: hidden;">
-                        <div style="background-color: #dc2626; width: 85%; height: 100%;"></div>
-                    </div>
-                </div>
-                <div>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; font-size: 14px;">
-                        <span>Dirección de Arte</span>
-                        <span>75%</span>
-                    </div>
-                    <div style="background-color: #e5e7eb; height: 8px; border-radius: 4px; overflow: hidden;">
-                        <div style="background-color: #dc2626; width: 75%; height: 100%;"></div>
-                    </div>
-                </div>
+            <div class="hero-image-container">
+                <span>Espacio para Imagen / Slider</span>
             </div>
-        </div>
-    </section>
-
-    <section id="contacto" style="background-color: #111827; color: #ffffff; padding: 100px 0;">
-        <div style="max-width: 600px; margin: 0 auto; padding: 0 20px; text-align: center;">
-            <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 15px;">¿Tienes un proyecto en mente?</h2>
-            <p style="color: #9ca3af; margin-bottom: 40px;">Ponte en contacto conmigo para que colaboremos y hagamos realidad tus ideas.</p>
             
-            <form action="#" method="POST" style="text-align: left;">
-                <div style="margin-bottom: 20px;">
-                    <label for="name" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: #e5e7eb;">Nombre</label>
-                    <input type="text" id="name" name="name" required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #374151; background-color: #1f2937; color: #fff; box-sizing: border-box; font-size: 15px;">
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <label for="email" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: #e5e7eb;">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #374151; background-color: #1f2937; color: #fff; box-sizing: border-box; font-size: 15px;">
-                </div>
-                <div style="margin-bottom: 25px;">
-                    <label for="message" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: #e5e7eb;">Mensaje</label>
-                    <textarea id="message" name="message" rows="4" required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #374151; background-color: #1f2937; color: #fff; box-sizing: border-box; font-size: 15px; resize: vertical;"></textarea>
-                </div>
-                <button type="submit" style="width: 100%; background-color: #dc2626; color: #fff; padding: 14px; border: none; border-radius: 6px; font-weight: 600; font-size: 16px; cursor: pointer; transition: background 0.3s;">Enviar Mensaje</button>
-            </form>
         </div>
-    </section>
 
-    <footer style="background-color: #0b0f19; color: #6b7280; padding: 40px 20px; text-align: center; border-top: 1px solid #1f2937; font-size: 14px;">
-        <p style="margin: 0;">&copy; 2026 Ejemplo. Todos los derechos reservados.</p>
-        <div style="margin-top: 15px;">
-            <a href="#" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">Behance</a> | 
-            <a href="#" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">LinkedIn</a> | 
-            <a href="#" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">Instagram</a>
+        <button class="slider-arrow" aria-label="Siguiente">&#10095;</button>
+
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
-    </footer>
+        
+    </main>
 
 </body>
 </html>
