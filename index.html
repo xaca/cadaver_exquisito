@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - Wireframe a Código</title>
+    <title>Landing Page - Con Imágenes Reales</title>
     <style>
         /* ==========================================================================
-           1. VARIABLES DE COLOR (Modifica estos valores para cambiar la paleta)
+           1. VARIABLES DE COLOR
            ========================================================================== */
         :root {
-            --steel-azure: #044389;      /* Azul Oscuro: Usado en topbar, texto principal y bordes */
-            --canary-yellow: #FCFF4B;    /* Amarillo: Usado para el estado hover del botón Buy */
-            --orange: #FFAD05;           /* Naranja: Color principal del botón Buy y acentos */
-            --sky-reflection: #7CAFC4;   /* Azul Claro Grisáceo: Fondo del degradado del Hero */
-            --cornflower-blue: #5995ED;  /* Azul Intermedio: Borde superior y fondo del contenedor de imagen */
-            --text-dark: #1a1a1a;        /* Texto oscuro para párrafos */
-            --text-light: #ffffff;       /* Texto claro para contrastes */
+            --steel-azure: #044389;
+            --canary-yellow: #FCFF4B;
+            --orange: #FFAD05;
+            --sky-reflection: #7CAFC4;
+            --cornflower-blue: #5995ED;
+            
+            --lime-cream: #DAFF7D;
+            --light-green: #B2EF9B;
+            --lavender-grey: #8C86AA;
+            --deep-lilac: #81559B;
+            --velvet-orchid: #7E3F8F;
+            
+            --bg-gradient-start: #ffffff;
+            --bg-gradient-end: #f3edf7;
+            --text-dark: #221b24;
+            --text-light: #ffffff;
         }
 
         /* ==========================================================================
@@ -29,7 +38,7 @@
         }
 
         body {
-            background-color: #f4f7f6;
+            background-color: #faf8fb;
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
@@ -37,131 +46,123 @@
         }
 
         /* ==========================================================================
-           3. BARRA SUPERIOR (Topbar: Dirección y Teléfono)
+           3. BARRA SUPERIOR (Topbar)
            ========================================================================== */
         .topbar {
-            background-color: var(--steel-azure);
+            background-color: var(--velvet-orchid);
             color: var(--text-light);
             display: flex;
-            justify-content: center; /* Centra los elementos horizontalmente */
-            gap: 40px;               /* Espacio de separación entre dirección y teléfono */
+            justify-content: center;
+            gap: 40px;
             padding: 10px 20px;
             font-size: 0.9rem;
-            border-bottom: 2px solid var(--cornflower-blue);
+            border-bottom: 2px solid var(--deep-lilac);
         }
 
         /* ==========================================================================
-           4. BARRA DE NAVEGACIÓN (Navbar principal)
+           4. BARRA DE NAVEGACIÓN (Navbar)
            ========================================================================== */
         .navbar {
             background-color: white;
             display: flex;
-            justify-content: space-between; /* Separa el bloque izquierdo del botón "Buy" */
-            align-items: center;            /* Centra verticalmente los elementos */
+            justify-content: space-between;
+            align-items: center;
             padding: 15px 5%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(126, 63, 143, 0.06);
         }
 
-        /* Contenedor que agrupa el Logo y el Menú de enlaces */
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 30px; /* Espacio entre el logo y el primer enlace */
+            gap: 30px;
         }
 
-        /* Componente: Logo */
         .logo {
-            border: 2px solid var(--steel-azure);
+            border: 2px solid var(--velvet-orchid);
             padding: 6px 20px;
-            border-radius: 20px; /* Hace el borde ovalado como en el wireframe */
+            border-radius: 20px;
             font-weight: bold;
-            color: var(--steel-azure);
+            color: var(--velvet-orchid);
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .logo:hover {
-            background-color: var(--steel-azure);
+            background-color: var(--velvet-orchid);
             color: white;
         }
 
-        /* Lista de enlaces (Home, News, Contact, Docs) */
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 20px; /* Espacio entre cada enlace */
+            gap: 20px;
         }
 
         .nav-menu a {
             text-decoration: none;
-            color: var(--steel-azure);
+            color: var(--velvet-orchid);
             font-weight: 500;
             transition: color 0.2s ease;
         }
 
         .nav-menu a:hover {
-            color: var(--orange); /* Cambio de color al pasar el cursor */
+            color: var(--deep-lilac);
         }
 
-        /* Componente: Botón de Acción (Buy) */
         .btn-buy {
-            background-color: var(--orange);
+            background-color: var(--light-green);
             color: var(--text-dark);
             text-decoration: none;
             padding: 8px 24px;
-            border-radius: 20px; /* Borde redondeado característico del wireframe */
+            border-radius: 20px;
             font-weight: bold;
-            border: 2px solid var(--orange);
+            border: 2px solid var(--light-green);
             transition: all 0.3s ease;
         }
 
         .btn-buy:hover {
-            background-color: var(--canary-yellow);
-            border-color: var(--canary-yellow);
+            background-color: var(--lime-cream);
+            border-color: var(--lime-cream);
         }
 
         /* ==========================================================================
-           5. SECCIÓN HERO / SLIDER CENTRAL
+           5. SECCIÓN PRINCIPAL / SLIDER CENTRAL (Hero)
            ========================================================================== */
         .hero-slider {
             position: relative;
-            flex: 1; /* Ocupa todo el espacio vertical restante de la pantalla */
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Distribuye flechas y contenido */
-            padding: 40px 5%;
-            background: linear-gradient(135deg, #ffffff 0%, var(--sky-reflection) 100%);
-            overflow: hidden;
+            justify-content: space-between;
+            padding: 50px 5%;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            border-bottom: 1px solid rgba(140, 134, 170, 0.2);
         }
 
-        /* Componente: Flechas Laterales (< y >) */
         .slider-arrow {
             background: none;
             border: none;
             font-size: 2.5rem;
-            color: var(--steel-azure);
+            color: var(--velvet-orchid);
             cursor: pointer;
             padding: 10px;
-            transition: transform 0.2s ease;
-            z-index: 10; /* Asegura que queden por encima de otros elementos */
+            transition: transform 0.2s ease, color 0.2s ease;
+            z-index: 10;
         }
 
         .slider-arrow:hover {
-            transform: scale(1.2); /* Efecto de crecimiento sutil */
-            color: var(--orange);
+            transform: scale(1.2);
+            color: var(--deep-lilac);
         }
 
-        /* Contenedor del Contenido (Divide el texto de la imagen) */
         .slider-content {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas iguales */
+            grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 50px;
             width: 90%;
             margin: 0 auto;
         }
 
-        /* Bloque Izquierdo: Textos (Título y Lorem Ipsum) */
         .hero-text {
             display: flex;
             flex-direction: column;
@@ -170,57 +171,39 @@
 
         .hero-text h1 {
             font-size: 3rem;
-            color: var(--steel-azure);
+            color: var(--velvet-orchid);
             line-height: 1.2;
         }
 
         .hero-text p {
-            font-size: 1.2rem;
-            color: #4a4a4a;
+            font-size: 1.1rem;
+            color: var(--text-dark);
             line-height: 1.6;
+            opacity: 0.85;
         }
 
-        /* Bloque Derecho: Contenedor de Imagen (Marcado con la X) */
+        /* ACTUALIZADO: Contenedor para la imagen principal (balon.jpg) */
         .hero-image-container {
-            position: relative;
             width: 100%;
             height: 350px;
-            background-color: var(--cornflower-blue);
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 8px 24px rgba(110, 95, 120, 0.15);
+            overflow: hidden; /* Asegura que la imagen respete los bordes redondeados */
         }
 
-        /* Simulación de las líneas cruzadas (X) del wireframe mediante CSS */
-        .hero-image-container::before,
-        .hero-image-container::after {
-            content: "";
-            position: absolute;
+        /* NUEVO: Estilos para que la imagen ocupe todo el espacio de forma limpia */
+        .hero-image {
             width: 100%;
-            height: 2px;
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        .hero-image-container::before { transform: rotate(45deg); }
-        .hero-image-container::after { transform: rotate(-45deg); }
-
-        /* Etiqueta de texto flotante sobre la imagen */
-        .hero-image-container span {
-            color: white;
-            font-weight: bold;
-            z-index: 1;
-            background: rgba(4, 67, 137, 0.8);
-            padding: 8px 16px;
-            border-radius: 4px;
+            height: 100%;
+            object-fit: cover; /* Recorta y encuadra la imagen sin deformarla */
+            display: block;
         }
 
-        /* Componente: Puntos de Paginación (Dots inferiores) */
         .slider-dots {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
-            transform: translateX(-50%); /* Centrado absoluto exacto */
+            transform: translateX(-50%);
             display: flex;
             gap: 12px;
         }
@@ -229,21 +212,93 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: rgba(4, 67, 137, 0.3); /* Punto inactivo (semitransparente) */
+            background-color: rgba(128, 85, 155, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .dot.active {
-            background-color: var(--steel-azure); /* Punto activo (relleno por completo) */
+            background-color: var(--velvet-orchid);
             transform: scale(1.2);
         }
 
         /* ==========================================================================
-           6. RESPONSIVE DESIGN (Ajustes para pantallas móviles)
+           6. SECCIÓN INFERIOR: TARJETAS (Cards)
+           ========================================================================== */
+        .cards-section {
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background-color: #ffffff;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: #faf8fb;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(140, 134, 170, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(110, 95, 120, 0.08);
+        }
+
+        /* ACTUALIZADO: Contenedor para las imágenes de las tarjetas */
+        .card-image-container {
+            width: 100%;
+            height: 220px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* NUEVO: Estilos para las imágenes de las tarjetas (jugador.jpg y estadio.jpg) */
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Mantiene la consistencia del diseño */
+            display: block;
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            color: var(--velvet-orchid);
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #554e56;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            color: var(--deep-lilac);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .card-link:hover {
+            color: var(--velvet-orchid);
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           7. RESPONSIVE DESIGN (Ajustes para dispositivos móviles)
            ========================================================================== */
         @media (max-width: 768px) {
-            /* Pasa de 2 columnas a 1 sola columna vertical */
             .slider-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -258,7 +313,11 @@
                 height: 250px;
             }
 
-            /* Reorganiza la navegación en formato de lista vertical */
+            .cards-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
             .navbar {
                 flex-direction: column;
                 gap: 15px;
@@ -281,32 +340,28 @@
     <nav class="navbar">
         <div class="nav-left">
             <a href="#" class="logo">Logo</a>
-            
             <ul class="nav-menu">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Noticias</a></li>
-                <li><a href="#">Contactos</a></li>
-                <li><a href="#">Documentos</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Docs</a></li>
             </ul>
         </div>
-        <a href="#" class="btn-buy">Comprar</a>
+        <a href="#" class="btn-buy">Buy</a>
     </nav>
 
     <main class="hero-slider">
-        
         <button class="slider-arrow" aria-label="Anterior">&#10094;</button>
 
         <div class="slider-content">
-            
             <div class="hero-text">
                 <h1>Titulo</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus. Proin gravida nibh vel velit auctor aliquet.</p>
             </div>
             
             <div class="hero-image-container">
-                <span>Espacio para Imagen / Slider</span>
+                <img src="balon.jpg" alt="Balón de fútbol" class="hero-image">
             </div>
-            
         </div>
 
         <button class="slider-arrow" aria-label="Siguiente">&#10095;</button>
@@ -316,8 +371,29 @@
             <span class="dot"></span>
             <span class="dot"></span>
         </div>
-        
     </main>
+
+    <section class="cards-section">
+        
+        <article class="card">
+            <div class="card-image-container">
+                <img src="jugador.jpg" alt="Jugador en la cancha" class="card-image">
+            </div>
+            <h2>Titulo</h2>
+            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+            <a href="#" class="card-link">Ver más...</a>
+        </article>
+
+        <article class="card">
+            <div class="card-image-container">
+                <img src="estadio.jpg" alt="Estadio de fútbol" class="card-image">
+            </div>
+            <h2>Titulo</h2>
+            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+            <a href="#" class="card-link">Ver más...</a>
+        </article>
+
+    </section>
 
 </body>
 </html>
